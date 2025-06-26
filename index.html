@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="h1">Hello World!</h1>
+    <h2 id="h2">JS digita: </h2>
+    <h3 class="h3">Teste 1</h3>
+    <h3 class="h3">Teste 2</h3>
+    <div id="bloco"></div>
+    <div>
+        <img id="imagem" src="https://ayltoninacio.com.br/img/p/32w1500.jpg">
+    </div>
+
+    <button id="botao">Click me</button>
+    <button onclick="trocaImagem()">Outro botão</button>
+    <script>
+        console.log("Hello World!");
+        //document.write("<h3>Teste</h3>")
+
+        //Buscar elemento por id
+        const h2 = document.getElementById("h2");
+        console.log(h2);
+
+        //Uso com seletores
+        const h1 = document.querySelector("#h1");
+        console.log(h1);
+        const h3 = document.querySelectorAll(".h3");
+        console.log(h3);
+
+        //Buscar elemento por nome da classe
+        const classH3 = document.getElementsByClassName("h3");
+        console.log(classH3);
+
+        //Manipulação de Elementos
+        //Texto
+        h2.textContent = "Novo Texto";
+        //HTMl - Tags
+        const div = document.getElementById("bloco");
+        div.innerHTML = "<h1>Titulo do Bloco</h1>";
+        console.log(div);
+
+        //Manipulação de Atributos
+        const img = document.getElementById("imagem");
+        console.log(img.getAttribute("src"));
+        //Nova imagem
+        img.setAttribute("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYLLqiTiFvI6IHt5F3WY4Stw5fw__PoWgirw&s")
+        // img.removeAttribute("src");
+
+        //Manipulação de CSS
+        img.style.border = "1px solid black";
+        img.style.borderRadius = "10px";
+
+
+        //Eventos
+        const button = document.getElementById("botao");
+        button.addEventListener("click", function() {
+            console.log("Entrou!")
+            img.setAttribute("src", "https://media.licdn.com/dms/image/v2/D4D12AQHb-RV8x24QOQ/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1711492066607?e=2147483647&v=beta&t=zgOdeEXhTAWOozLjPHUuImHY6ozAUaNMWqw5zre95F4")
+        })
+
+        function trocaImagem(){
+            img.setAttribute("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYLLqiTiFvI6IHt5F3WY4Stw5fw__PoWgirw&s")
+        }
+
+    </script>
+</body>
+</html>
