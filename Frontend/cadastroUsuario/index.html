@@ -13,29 +13,24 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="forms">
-      <form class="container">
-        <div class="mb-3">
+    <div class="bordas">
+      <h1 class="titles">Cadastrar Usuário</h1>
+      <form class="container" onsubmit="cadastroUsuario(event)"> <!--Usamos $ Para referenciar um objeto para o javascript, mas n tem nada-->
+        <div class="mb-3 subtitles">
           <label for="nome" class="form-label">Nome do Usuário</label>
           <input type="text" class="form-control" id="nome" />
         </div>
-        <div class="mb-3">
+        <div class="mb-3 subtitles">
           <label for="idade" class="form-label">Idade</label>
-          <input
-            type="number"
-            class="form-control"
-            id="idade"
-            min="0"
-            max="120"
-          />
+          <input type="number" class="form-control" id="idade" min="0" max="120" />
         </div>
-        <div class="mb-3">
+        <div class="mb-3 subtitles">
           <label for="senha" class="form-label">Senha</label>
           <input type="password" class="form-control" id="senha" />
         </div>
         <div class="botoes">
-            <a href="../index.html" class="btn btn-secondary">Voltar</a>
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+          <a href="../index.html" class="btn btn-secondary">Voltar</a>
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
         </div>
       </form>
     </div>

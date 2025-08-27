@@ -1,10 +1,38 @@
-.forms{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+body {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, rgb(0, 0, 0), rgb(121, 1, 111));
+  height: 100vh;
 }
-.botoes{
-    display: flex;
-    justify-content: space-between;
+
+.forms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.botoes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.titles {
+  color: white;
+  font-size: 50px;
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: bold;
+}
+
+.subtitles {
+  color: white;
+  font-size: 25px;
+  font-family: sans-serif;
+}
+.bordas {
+  box-shadow: 1px 3px 3px 3px purple;
+  border-radius: 15px;
+  padding: 25px;
 }

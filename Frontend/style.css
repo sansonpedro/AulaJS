@@ -1,6 +1,33 @@
+.cadastrarUsuario {
+  display: flex;
+  justify-content: end;
+  margin-top: 5px;
+}
 
-.cadastrarUsuario{
-    display: flex;
-    justify-content: end;
-    margin-top: 40px;
+body {
+  background: linear-gradient(180deg, rgb(0, 0, 0), rgb(121, 1, 111));
+  height: 100vh;
+}
+
+.botoes {
+  display: flex;
+  justify-content: space-between;
+  color: purple;
+}
+
+.titles {
+  color: white;
+  font-size: 50px;
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: bold;
+}
+
+.container {
+  height: 3vh;
+  margin-top: 30vh;
+}
+
+.container ul {
+  text-align: center;
 }
