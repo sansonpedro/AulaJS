@@ -2,7 +2,10 @@ body {
   display: grid;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(180deg, rgb(0, 0, 0), rgb(121, 1, 111));
+  background-image: url(/Frontend/imgs/hashira\ code.png);
+  background-position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
 }
 
