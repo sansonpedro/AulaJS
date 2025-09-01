@@ -5,11 +5,12 @@
 }
 
 body {
-  background-image: url(/Frontend/imgs/yasuo\ code.jpg);
+  background-image: url(/Frontend/imgs/hello\ code.png);
   background-position: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  width: 100%;
+  top: 20px;
 }
 
 .botoes {
@@ -19,11 +20,12 @@ body {
 }
 
 .titles {
-  color: rgb(0, 0, 0);
-  font-size: 50px;
+  color: rgb(255, 1, 221);
+  font-size: 70px;
   font-family: sans-serif;
   text-align: center;
   font-weight: bold;
+  text-decoration: underline;
 }
 
 .container {
