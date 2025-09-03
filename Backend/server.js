@@ -11,8 +11,8 @@ app.use(express.json());
 app.use(cors());
 
 const usuarios = [
-  { id: 1, nome: "Otavio", idade: 20, senha: "123" },
-  { id: 2, nome: "Admin", idade: 20, senha: "1234" },
+  { id: 1, nome: "Otavio", idade: 20, senha: "123", cep: "01001000" },
+  { id: 2, nome: "Admin", idade: 20, senha: "1234", cep: "89251100" },
 ];
 
 let nextId = 3;

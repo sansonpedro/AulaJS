@@ -1,3 +1,14 @@
+/* Vídeo de fundo */
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
 .cadastrarUsuario {
   display: flex;
   justify-content: end;
@@ -5,12 +16,10 @@
 }
 
 body {
-  background-image: url(/Frontend/imgs/hello\ code.png);
-  background-position: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  top: 20px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 .botoes {
@@ -20,12 +29,26 @@ body {
 }
 
 .titles {
-  color: rgb(255, 1, 221);
+  color: rgb(255, 0, 0);
   font-size: 70px;
   font-family: sans-serif;
   text-align: center;
   font-weight: bold;
-  text-decoration: underline;
+}
+
+button {
+  background-color: #ff0000;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #b31500;
 }
 
 .container {

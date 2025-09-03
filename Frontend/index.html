@@ -13,13 +13,20 @@
     />
   </head>
   <body>
+    <!-- Vídeo de fundo -->
+    <video autoplay muted loop id="bgVideo">
+      <source src="/Frontend/imgs/moon.mp4" type="video/mp4" />
+      Seu navegador não suporta vídeo em background.
+    </video>
+
+    <!-- Conteúdo -->
     <div class="bordas container">
       <h1 class="titles">Lista de Usuários</h1>
       <ul class="list-group" id="lista-usuarios">
         <!--itens-->
       </ul>
       <a href="cadastroUsuario/index.html">
-        <button type="button" class="btn btn-primary">Cadastrar Usuário</button>
+        <button type="submit" class="button">Cadastrar Usuário</button>
       </a>
     </div>
 

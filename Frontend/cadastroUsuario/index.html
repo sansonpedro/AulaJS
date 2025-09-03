@@ -15,7 +15,8 @@
   <body>
     <div class="bordas">
       <h1 class="titles">Cadastrar Usuário</h1>
-      <form class="container" onsubmit="cadastroUsuario(event)"> <!--Usamos $ Para referenciar um objeto para o javascript, mas n tem nada-->
+      <form class="container" onsubmit="cadastroUsuario(event)">
+        <!--Usamos $ Para referenciar um objeto para o javascript, mas n tem nada-->
         <div class="mb-3 subtitles">
           <label for="nome" class="form-label">Nome do Usuário</label>
           <input type="text" class="form-control" id="nome" />
@@ -27,6 +28,10 @@
         <div class="mb-3 subtitles">
           <label for="senha" class="form-label">Senha</label>
           <input type="password" class="form-control" id="senha" />
+        </div>
+        <div class="mb-3 subtitles">
+          <label for="nome" class="form-label">Cep</label>
+          <input type="text" class="form-control" id="cep" />
         </div>
         <div class="botoes">
           <a href="../index.html" class="btn btn-secondary">Voltar</a>
