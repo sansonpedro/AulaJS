@@ -29,10 +29,20 @@
           <label for="senha" class="form-label">Senha</label>
           <input type="password" class="form-control" id="senha" />
         </div>
+
         <div class="mb-3 subtitles">
-          <label for="nome" class="form-label">Cep</label>
-          <input type="text" class="form-control" id="cep" />
+          <label for="cep" class="form-label">CEP</label>
+          <input type="text" class="form-control" id="cep" onblur="buscarCEP()" />
         </div>
+        <div class="mb-3 subtitles">
+          <label for="rua" class="form-label">Rua</label>
+          <input type="text" class="form-control" id="rua" readonly />
+        </div>
+        <div class="mb-3 subtitles">
+          <label for="bairro" class="form-label">Bairro</label>
+          <input type="text" class="form-control" id="bairro" readonly />
+        </div>
+
         <div class="botoes">
           <a href="../index.html" class="btn btn-secondary">Voltar</a>
           <button type="submit" class="btn btn-primary">Cadastrar</button>

@@ -1,86 +1,106 @@
-const express = require("express"); // Importa o Express
-const cors = require("cors"); // Importa o CORS
+const express = require("express")
+const cors = require("cors")
 
-const app = express(); //Cria o servidor
+const app = express()
+const port = 3000
 
-const port = 3000; //Variavel para armazenar a porta
-
-//Para permitir receber json nas requisições
-app.use(express.json());
-54;
-app.use(cors());
+app.use(express.json())
+app.use(cors())
 
 const usuarios = [
-  { id: 1, nome: "Otavio", idade: 20, senha: "123", cep: "01001000" },
-  { id: 2, nome: "Admin", idade: 20, senha: "1234", cep: "89251100" },
-];
+  { id: 1, nome: "Otavio", idade: 20, senha: "123", cep: "01001000", rua: "Praça da Sé", bairro: "Sé" },
+  { id: 2, nome: "Admin", idade: 20, senha: "1234", cep: "89251100", rua: "Rua Walter Marquardt", bairro: "Barra do Rio Molha" },
+]
 
-let nextId = 3;
+let nextId = 3
 
-//request - requisição
-//response - respota
-app.get("/", (request, response) => {
-  response.send("Primeiro servidor DESI - Malwee");
-});
+// Função para buscar dados no ViaCEP
+async function buscarEndereco(cep) {
+  try {
+    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
+    const data = await response.json()
+    return {
+      rua: data.logradouro || "",
+      bairro: data.bairro || ""
+    }
+  } catch (err) {
+    console.error("Erro ao buscar endereço:", err)
+    return { rua: "", bairro: "" }
+  }
+}
 
-//Buscar todos os usuários
+// Rota inicial
+app.get("/", (req, res) => {
+  res.send("Primeiro servidor DESI - Malwee")
+})
+
+// Buscar todos os usuários
 app.get("/usuarios", (req, res) => {
-  //send -> envia os dados
-  res.send(usuarios);
-});
+  res.send(usuarios)
+})
 
-//Buscar um usuário -> get by id
+// Buscar usuário por ID
 app.get("/usuarios/:id", (req, res) => {
-  //params - parametros da requisição (fica na url)
-  const id = parseInt(req.params.id);
+  const id = parseInt(req.params.id)
+  const usuario = usuarios.find(u => u.id === id)
 
-  const usuario = usuarios.find((usuario) => usuario.id == id);
-
-  if (usuario != null) {
-    res.send(usuario);
+  if (usuario) {
+    res.send(usuario)
   } else {
-    res.status(404).send("Usuário não encontrado!");
+    res.status(404).send("Usuário não encontrado!")
   }
-});
+})
 
-//Criar um usuário
-app.post("/usuarios", (req, res) => {
-  //body - corpo da requisição
-  const novoUsuario = req.body;
-  novoUsuario.id = nextId++;
-  usuarios.push(novoUsuario);
+// Criar usuário
+app.post("/usuarios", async (req, res) => {
+  const novoUsuario = req.body
+  novoUsuario.id = nextId++
 
-  res.status(201).send(novoUsuario);
-});
+  // Completa rua e bairro com base no CEP
+  if (novoUsuario.cep) {
+    const endereco = await buscarEndereco(novoUsuario.cep)
+    novoUsuario.rua = endereco.rua
+    novoUsuario.bairro = endereco.bairro
+  }
 
-//Atualizar um usuário
-app.put("/usuarios/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  const novoUsuario = req.body;
-  novoUsuario.id = id;
-  const index = usuarios.findIndex((usuario) => usuario.id == id);
+  usuarios.push(novoUsuario)
+  res.status(201).send(novoUsuario)
+})
 
-  if (index != null) {
-    usuarios[index] = novoUsuario;
-    res.status(200).send(novoUsuario);
+// Atualizar usuário
+app.put("/usuarios/:id", async (req, res) => {
+  const id = parseInt(req.params.id)
+  const novoUsuario = req.body
+  novoUsuario.id = id
+
+  if (novoUsuario.cep) {
+    const endereco = await buscarEndereco(novoUsuario.cep)
+    novoUsuario.rua = endereco.rua
+    novoUsuario.bairro = endereco.bairro
+  }
+
+  const index = usuarios.findIndex(u => u.id === id)
+  if (index !== -1) {
+    usuarios[index] = novoUsuario
+    res.status(200).send(novoUsuario)
   } else {
-    res.status(404).send("Usuário não encontrado!");
+    res.status(404).send("Usuário não encontrado!")
   }
-});
+})
 
-//Deletar um usuário
+// Deletar usuário
 app.delete("/usuarios/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  const index = usuarios.findIndex((usuario) => usuario.id == id);
+  const id = parseInt(req.params.id)
+  const index = usuarios.findIndex(u => u.id === id)
 
-  if (index != null) {
-    usuarios.splice(index, 1);
-    res.status(204).send("Usuário com id:" + id + " removido com sucesso!");
+  if (index !== -1) {
+    usuarios.splice(index, 1)
+    res.status(204).send()
   } else {
-    res.status(404).send("Usuário não encontrado!");
+    res.status(404).send("Usuário não encontrado!")
   }
-});
+})
 
 app.listen(port, () => {
-  console.log("Servidor rodando em http://localhost:3000");
-});
+  console.log("Servidor rodando em http://localhost:3000")
+})
